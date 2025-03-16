@@ -1,75 +1,166 @@
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-## Template Instructions
+## Video Game Sales and Ratings Explorer
 
-Welcome,
+The Video Game Sales and Ratings Explorer is a comprehensive data analysis tool designed to explore and compare video game sales, ratings, and genre performance over time. The project leverages the Video Game Sales Dataset from Kaggle, which includes data on game sales, ratings, genres, and platforms.
 
-This is the Code Institute student template for the Data Analytics capstone project. We have preinstalled all of the tools you need to get started. It's perfectly okay to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
+Target Audience:
+Game publishers, market analysts, and game developers.
 
-You can safely delete the Template Instructions section of this README.md file and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
+Business Case:
 
-## How to use this repo
+Key Questions:
+What factors influence game ratings?
+Which genres have higher sales and ratings?
 
-1. Use this template to create your GitHub project repo. Click the Use this template button, then click Create a new repository.
+Value:
+Provides actionable insights for strategic marketing and game development.
+Supports data-driven decision-making in the gaming industry.
 
-1. Copy the URL of your repository to your clipboard.
+## Dataset Content
 
-1. In VS Code, select File - Open Folder.
+The project uses the Video Game Sales Dataset from Kaggle. The dataset contains:
 
-1. Select your vscode-projects folder, then click the Select Folder button on Windows, or Open button on Mac.
+* Game Sales: Global sales figures, regional sales data.
+* Ratings: User and critic ratings.
+* Genres: Classification of games into genres (e.g., Action, RPG, Strategy).
+* Platforms: Data on platforms on which games were released.
+* Additional Metrics: Release dates and publisher information.
 
-1. From the top menu in VS Code, select Terminal > New Terminal to open the terminal.
+## Business Requirements
 
-1. In the terminal, type git clone followed by the URL of your GitHub repository. Then hit Enter. This command will download all the files in your GitHub repository into your vscode-projects folder.
+* Market Insight: Identify key factors that drive game ratings and sales.
+* Genre Performance: Understand which genres excel in both sales and ratings.
+* Trend Analysis: Analyze how game sales and ratings have evolved over time.
+* Strategic Guidance: Provide insights to support marketing and game development strategies.
 
-1. In VS Code, select File > Open Folder again.
+## Hypotheses and Validation
 
-1. This time, navigate to and select the folder for the project you just downloaded. Then, click Select Folder.
+Hypotheses:
 
-1. A virtual environment is necessary when working with Python projects to ensure each project's dependencies are kept separate from each other. You need to create your virtual environment, also called a venv, and then ensure that it is activated any time you return to your workspace.
-Click the gear icon in the lower left-hand corner of the screen to open the Manage menu and select Command Palette to open the VS Code command palette.
+1. Rating Influence Hypothesis: Games in certain genres (e.g., Action or RPG) consistently receive higher ratings due to better production quality or audience appeal.
+2. Sales Correlation Hypothesis: There is a positive correlation between high ratings and high sales, indicating that better-reviewed games tend to sell more.
 
-1. In the command palette, type: create environment and select Python: Create Environment…
+Validation Approach:
 
-1. Choose Venv from the dropdown list.
+* Descriptive Analysis: Use summary statistics and visualizations to inspect rating distributions and sales figures.
+* Visual Correlation: Generate scatter plots and heatmaps to assess correlations between sales, ratings, and genres.
+* Trend Analysis: Use line plots to compare sales trends over time across genres.
 
-1. Choose the Python version you installed earlier. Currently, we recommend Python 3.12.8
+## Project Plan
 
-1. DO NOT click the box next to requirements.txt, as you need to do more steps before you can install your dependencies. Click OK.
+High-Level Steps:
 
-1. You will see a .venv folder appear in the file explorer pane to show that the virtual environment has been created.
+1. Data Collection & Cleaning:
+* Download and inspect the Video Game Sales Dataset.
+* Clean the dataset (handle missing values, standardize column names, format data types).
+2. Exploratory Data Analysis (EDA):
+* Generate descriptive statistics and initial visualizations.
+* Identify key variables and relationships.
+3. Hypothesis Testing & Visualization:
+* Create visualizations to test the hypotheses (line plots, bar plots, scatter plots, and heatmaps).
+* Document findings and insights from the analysis.
+4. Dashboard Design:
+* Plan and design an interactive dashboard using Streamlit.
+* Map business requirements to specific visualizations and interactive filters.
+5. Documentation & Deployment:
+* Document the project workflow in a comprehensive README and Jupyter Notebook.
+* Deploy the dashboard on a cloud platform (e.g., Heroku) and update the live link.
+## Data Management:
+* Collection: Data obtained from Kaggle.
+* Processing: Data cleaned and preprocessed using Pandas.
+* Storage: Organized in dedicated folders (e.g., /data, /notebooks).
+* Version Control: All code and documentation maintained with Git and pushed to GitHub.
+## Research Methodologies:
+* Exploratory Data Analysis: For initial insights and descriptive statistics.
+* Visualization: To illustrate trends and correlations.
+* Correlation Analysis: To test hypotheses without deploying complex machine learning models.
+## Analysis Techniques Used
+* Descriptive Statistics: Summarizing central tendencies and dispersions.
+* Time-Series Analysis: Tracking sales and rating trends over time.
+* Correlation Analysis: Using scatter plots and heatmaps to visualize relationships.
+Visualization Libraries:
+* Matplotlib & Seaborn: For static plots (bar plots, histograms).
+* Plotly Express: For interactive visualizations (line plots, scatter plots).
 
-1. Important: Please add the .venv to your .gitignore file
+Limitations:
 
-1. Return to the terminal by clicking on the TERMINAL tab or click on the Terminal menu and choose New Terminal if no terminal is currently open.
+* The analysis is limited by the available variables in the dataset.
+* Certain niche genres may have sparse data, which could affect trend analysis.
+* No advanced predictive modeling is included; the focus remains on visualizing and exploring correlations.
 
-1. In the terminal, use the command below to install your dependencies. This may take several minutes.
- `pip3 install -r requirements.txt`
+## Generative AI Tools Usage
+* Ideation and Design:
+Used ChatGPT to brainstorm visualization ideas and refine project hypotheses.
+* Code Optimization:
+Employed AI tools for code suggestions during data cleaning and visualization.
+* Dashboard Layout:
+Leveraged generative AI for feedback on user interface design and interactive elements.
 
-1. Open the jupyter_notebooks directory, and click on the notebook you want to open.
+## Ethical Considerations
+* Data Privacy:
+The dataset is publicly available on Kaggle and contains no personal information.
+* Bias and Fairness:
+Acknowledge potential biases in user ratings and genre classifications.
+Document any limitations in the data that might impact the fairness of conclusions.
+* Transparency:
+All steps from data cleaning to visualization are fully documented to ensure reproducibility.
 
-1. Click the kernel button and choose Python Environments.
+## Dashboard Design
+Dashboard Pages and Content:
 
-Note that the kernel says Python 3.12.2 as it inherits from the workspace, so it will be Python-3.12.2 as installed by our template. To confirm this, you can use `! python --version` in a notebook code cell.
+* Home Page:
+Overview of the project purpose, key metrics, and executive summary.
+* Sales Trends:
+Interactive line plot displaying game sales trends over time.
+* Genre Performance:
+Bar plot showing average ratings by genre.
+* Sales vs. Ratings:
+Scatter plot comparing sales figures against game ratings.
+* Correlation Analysis:
+Heatmap illustrating correlations between sales, ratings, and other metrics.
+* Filters and Widgets:
+Options to filter data by release year, genre, and platform.
 
-## Cloud IDE Reminders
+* Communication Strategy:
+Visualizations are designed with clear labels and tooltips.
+Narrative sections explain complex insights in simple terms for non-technical users.
+Interactive elements enable deeper exploration for technical users.
 
-To log into the Heroku toolbelt CLI:
+## Unfixed Bugs and Limitations
+* Interactive Rendering:
+Some interactive plots may experience slower rendering on lower-end devices.
+* Data Gaps:
+Sparse data in certain niche genres may limit detailed trend analysis.
+* Known Issues:
+Minor filtering glitches in the dashboard are identified but will be addressed in future updates.
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## Development Roadmap
+* Challenges Faced:
+Inconsistent data formatting and missing values.
+Variability in data quality across genres and platforms.
+* Strategies and Future Plans:
+Continue refining data cleaning procedures.
+Expand the dashboard with additional interactive features.
+Explore advanced visualization techniques and additional datasets for broader insights.
+* New Skills to Learn:
+Advanced dashboard interactivity using Streamlit.
+Cloud deployment strategies and optimization techniques.
+Enhanced data visualization techniques using Plotly.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## Main Data Analysis Libraries
+* Pandas: Data cleaning and manipulation.
+* Matplotlib & Seaborn: Creating static visualizations.
+* Plotly Express: Developing interactive visualizations.
+* Streamlit: Building the interactive dashboard.
+* Jupyter Notebook: Documenting the workflow and analysis.
 
-* Set the runtime.txt Python version to a [Heroku-22](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
+## Credits and Acknowledgements
 
-1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+## Content and Media Sources:
+* Dataset: Video Game Sales Dataset from Kaggle.
+* Tutorials and Guidance: Code snippets and visualization techniques adapted from online tutorials, Kaggle kernels, and community resources.
+* Generative AI Assistance: Ideas and code optimizations provided by ChatGPT and other AI tools.
+
+Acknowledgements:
+Special thanks to mentors, peers, and the data science community for their invaluable support and feedback throughout the project.
