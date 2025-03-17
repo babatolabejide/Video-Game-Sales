@@ -2,7 +2,7 @@
 
 ## Video Game Sales and Ratings Explorer
 
-The Video Game Sales and Ratings Explorer is a comprehensive data analysis tool designed to explore and compare video game sales, ratings, and genre performance over time. The project leverages the Video Game Sales Dataset from Kaggle, which includes data on game sales, ratings, genres, and platforms.
+Video Game Sales Explorer is a comprehensive data analysis tool designed to streamline exploration, analysis, and visualization of video game sales data. The tool supports multiple data formats (e.g., CSV) and provides an intuitive interface for both novice and expert data analysts to uncover market trends, genre performance, and regional sales insights in the video game industry.
 
 Target Audience:
 Game publishers, market analysts, and game developers.
@@ -19,113 +19,117 @@ Supports data-driven decision-making in the gaming industry.
 
 ## Dataset Content
 
-The project uses the Video Game Sales Dataset from Kaggle. The dataset contains:
+The dataset used is vgsales.csv, sourced from Kaggle (originally compiled by Gregory Smith). 
+https://www.kaggle.com/datasets/gregorut/videogamesales
+It contains 16,598 records of video game sales with the following columns:
 
-* Game Sales: Global sales figures, regional sales data.
-* Ratings: User and critic ratings.
-* Genres: Classification of games into genres (e.g., Action, RPG, Strategy).
-* Platforms: Data on platforms on which games were released.
-* Additional Metrics: Release dates and publisher information.
+* Rank: Sales rank
+* Name: Game title
+* Platform: Gaming platform (e.g., Wii, PS3)
+* Year: Release year
+* Genre: Game genre (e.g., Action, Sports)
+* Publisher: Game publisher
+* NA_Sales, EU_Sales, JP_Sales, Other_Sales, Global_Sales: Sales in millions by region and worldwide.
+
+The dataset size is approximately 2 MB, well below the repository’s 100 GB limit. Note: It lacks ratings data (e.g., Metacritic scores), so hypotheses initially involving ratings have been adjusted to focus on sales-based insights.
 
 ## Business Requirements
 
-* Market Insight: Identify key factors that drive game ratings and sales.
-* Genre Performance: Understand which genres excel in both sales and ratings.
-* Trend Analysis: Analyze how game sales and ratings have evolved over time.
-* Strategic Guidance: Provide insights to support marketing and game development strategies.
+1. Market Insight: Identify key markets and their sales dynamics to inform targeted marketing strategies.
+2. Genre Performance: Determine which genres perform best in terms of sales to guide game development priorities.
+3. Trend Analysis: Analyze sales trends over time to predict future market shifts.
+4. Strategic Guidance: Provide actionable insights for stakeholders based on regional and genre-based sales patterns.
 
-## Hypotheses and Validation
+## Hypothesis and Validation
 
-Hypotheses:
+1. Hypothesis 1: Action and Sports genres have higher average global sales than other genres.
 
-1. Rating Influence Hypothesis: Games in certain genres (e.g., Action or RPG) consistently receive higher ratings due to better production quality or audience appeal.
-2. Sales Correlation Hypothesis: There is a positive correlation between high ratings and high sales, indicating that better-reviewed games tend to sell more.
+Validation: Calculate mean sales by genre and compare using a bar plot and statistical tests (e.g., t-test).
 
-Validation Approach:
+2. Hypothesis 2: Sales trends for top genres peak during specific console generations (e.g., 2005-2010).
 
-* Descriptive Analysis: Use summary statistics and visualizations to inspect rating distributions and sales figures.
-* Visual Correlation: Generate scatter plots and heatmaps to assess correlations between sales, ratings, and genres.
-* Trend Analysis: Use line plots to compare sales trends over time across genres.
+Validation: Use a line plot to visualize sales over time for top genres and identify peaks.
+
+3. Hypothesis 3: NA and EU sales are strongly correlated, unlike JP sales, due to market similarities.
+
+Validation: Compute correlation coefficients and visualize with scatter and heatmap plots.
 
 ## Project Plan
 
 High-Level Steps:
 
-1. Data Collection & Cleaning:
-* Download and inspect the Video Game Sales Dataset.
-* Clean the dataset (handle missing values, standardize column names, format data types).
-2. Exploratory Data Analysis (EDA):
-* Generate descriptive statistics and initial visualizations.
-* Identify key variables and relationships.
-3. Hypothesis Testing & Visualization:
-* Create visualizations to test the hypotheses (line plots, bar plots, scatter plots, and heatmaps).
-* Document findings and insights from the analysis.
-4. Dashboard Design:
-* Plan and design an interactive dashboard using Streamlit.
-* Map business requirements to specific visualizations and interactive filters.
-5. Documentation & Deployment:
-* Document the project workflow in a comprehensive README and Jupyter Notebook.
-* Deploy the dashboard on a cloud platform (e.g., Heroku) and update the live link.
-## Data Management:
-* Collection: Data obtained from Kaggle.
-* Processing: Data cleaned and preprocessed using Pandas.
-* Storage: Organized in dedicated folders (e.g., /data, /notebooks).
-* Version Control: All code and documentation maintained with Git and pushed to GitHub.
-## Research Methodologies:
-* Exploratory Data Analysis: For initial insights and descriptive statistics.
-* Visualization: To illustrate trends and correlations.
-* Correlation Analysis: To test hypotheses without deploying complex machine learning models.
+High-Level Steps
+1. Data Collection: Obtain vgsales.csv from Kaggle.
+2. Data Cleaning: Remove missing values, convert data types, and validate entries.
+3. Exploratory Analysis: Generate summary statistics and initial visualizations.
+4. Visualization: Create bar, line, scatter, and heatmap plots to address hypotheses and requirements.
+5. Dashboard Development: Build an interactive Streamlit app with Plotly visualizations.
+6. Deployment: Host the app on Heroku for stakeholder access.
+
+Data Management
+
+* Collection: Downloaded vgsales.csv and stored in /data folder.
+* Processing: Cleaned data using Pandas (e.g., dropped NaN in Year and Publisher, converted Year to int) and saved as vgsales_cleaned.csv.
+* Analysis: Performed in Jupyter Notebooks (notebooks/data_cleaning.ipynb) with version control via Git.
+* Interpretation: Insights derived from visualizations and statistical measures (e.g., correlation).
+
+Research Methodologies
+* Why Chosen: Descriptive statistics and visualizations (bar, line, scatter, heatmap) are standard for exploratory data analysis, suitable for sales trends and correlations. Python libraries (Pandas, Seaborn) offer robust, reproducible analysis.
+* Rationale: These methods align with the capstone’s emphasis on statistical application and visualization.
+
+## Rationale to Map Business Requirements to Data Visualizations
+1. Market Insight → Scatter Plot (NA vs. EU Sales) and Heatmap (Regional Correlations):
+Rationale: Reveals sales relationships across regions, guiding market prioritization.
+2. Genre Performance → Bar Plot (Average Sales by Genre):
+Rationale: Highlights top genres by sales, informing development focus.
+3. Trend Analysis → Line Plot (Sales Over Time by Genre):
+Rationale: Tracks historical trends, aiding in forecasting.
+4. Strategic Guidance → All Plots:
+Rationale: Combined insights offer a holistic view for decision-making.
+
 ## Analysis Techniques Used
-* Descriptive Statistics: Summarizing central tendencies and dispersions.
-* Time-Series Analysis: Tracking sales and rating trends over time.
-* Correlation Analysis: Using scatter plots and heatmaps to visualize relationships.
-Visualization Libraries:
-* Matplotlib & Seaborn: For static plots (bar plots, histograms).
-* Plotly Express: For interactive visualizations (line plots, scatter plots).
+1. Descriptive Statistics: Mean, sum, and correlation (e.g., df.describe(), corr()) to summarize sales.
+* Limitations: Assumes data completeness; missing years/publishers were dropped.
+* Alternatives: Imputation for missing values (not used due to small percentage).
 
-Limitations:
+2. Visualization: Bar, line, scatter, and heatmap plots via Seaborn/Matplotlib.
+* Limitations: Static plots lack interactivity; addressed by planning Plotly in dashboard.
+3. Structure: Sequential—cleaning, then exploration, then visualization—to ensure data quality before analysis.
+* Justification: Prevents garbage-in, garbage-out; aligns with LO5 (data management).
+4. Data Limitations: No ratings data; shifted focus to sales correlations.
+* Alternative: Plan to source ratings later (e.g., Metacritic API).
 
-* The analysis is limited by the available variables in the dataset.
-* Certain niche genres may have sparse data, which could affect trend analysis.
-* No advanced predictive modeling is included; the focus remains on visualizing and exploring correlations.
-
-## Generative AI Tools Usage
-* Ideation and Design:
-Used ChatGPT to brainstorm visualization ideas and refine project hypotheses.
-* Code Optimization:
-Employed AI tools for code suggestions during data cleaning and visualization.
-* Dashboard Layout:
-Leveraged generative AI for feedback on user interface design and interactive elements.
+## Use of Generative AI
+* Ideation: Grok (xAI) suggested hypotheses and plot types based on dataset.
+* Design Thinking: Proposed mapping business requirements to visualizations.
+* Code Optimization: Provided cleaned, efficient Pandas code and visualization snippets.
 
 ## Ethical Considerations
-* Data Privacy:
-The dataset is publicly available on Kaggle and contains no personal information.
-* Bias and Fairness:
-Acknowledge potential biases in user ratings and genre classifications.
-Document any limitations in the data that might impact the fairness of conclusions.
-* Transparency:
-All steps from data cleaning to visualization are fully documented to ensure reproducibility.
+* Data Privacy: Public dataset, no personal data (LO6.1 compliant).
+* Bias: Sales overrepresent NA/EU markets; JP and smaller regions underrepresented.
+* Mitigation: Noted in insights; future inclusion of diverse datasets planned.
+* Fairness: Avoided overgeneralizing genre success due to regional cultural differences.
+* Legal: No GDPR issues; data is aggregated and publicly sourced.
 
 ## Dashboard Design
-Dashboard Pages and Content:
+Pages and Content
+1. Home Page:
+* Text Block: Project overview and dataset description.
+* Image: Video game sales trend graphic (placeholder).
+2. Sales by Genre:
+* Bar Plot (Plotly): Interactive average sales by genre with hover details.
+* Dropdown: Filter by region (NA, EU, JP, Other).
+3. Sales Trends:
+* Line Plot (Plotly): Sales over time for top genres.
+* Slider: Select year range.
+4. Regional Analysis:
+* Scatter Plot (Plotly): NA vs. EU sales by genre.
+* Heatmap (Plotly): Correlation across regions.
+* Checkbox: Toggle genres to include.
 
-* Home Page:
-Overview of the project purpose, key metrics, and executive summary.
-* Sales Trends:
-Interactive line plot displaying game sales trends over time.
-* Genre Performance:
-Bar plot showing average ratings by genre.
-* Sales vs. Ratings:
-Scatter plot comparing sales figures against game ratings.
-* Correlation Analysis:
-Heatmap illustrating correlations between sales, ratings, and other metrics.
-* Filters and Widgets:
-Options to filter data by release year, genre, and platform.
-
-* Communication Strategy:
-Visualizations are designed with clear labels and tooltips.
-Narrative sections explain complex insights in simple terms for non-technical users.
-Interactive elements enable deeper exploration for technical users.
+Communication to Audiences
+Technical: Heatmap and scatter plots with correlation stats for data scientists.
+Non-Technical: Bar and line plots with clear titles and legends for stakeholders.
 
 ## Unfixed Bugs and Limitations
 * Interactive Rendering:
@@ -135,18 +139,22 @@ Sparse data in certain niche genres may limit detailed trend analysis.
 * Known Issues:
 Minor filtering glitches in the dashboard are identified but will be addressed in future updates.
 
+## Knowledge Gaps
+* Gap: Limited Streamlit experience.
+* Addressed: Planned tutorials and Grok assistance for dashboard setup.
+
 ## Development Roadmap
-* Challenges Faced:
-Inconsistent data formatting and missing values.
-Variability in data quality across genres and platforms.
-* Strategies and Future Plans:
-Continue refining data cleaning procedures.
-Expand the dashboard with additional interactive features.
-Explore advanced visualization techniques and additional datasets for broader insights.
-* New Skills to Learn:
-Advanced dashboard interactivity using Streamlit.
-Cloud deployment strategies and optimization techniques.
-Enhanced data visualization techniques using Plotly.
+Challenges and Strategies
+
+* Challenge: Missing ratings data.
+* Strategy: Refocused on sales; planned future augmentation.
+* Challenge: Visualization complexity for dashboard.
+* Strategy: Used Grok to prototype plots, will learn Plotly.
+
+Next Skills/Tools
+* Learn Plotly for interactive visualizations.
+* Explore Streamlit for dashboard deployment.
+* Study web scraping for ratings data.
 
 ## Main Data Analysis Libraries
 * Pandas: Data cleaning and manipulation.
@@ -160,7 +168,7 @@ Enhanced data visualization techniques using Plotly.
 ## Content and Media Sources:
 * Dataset: Video Game Sales Dataset from Kaggle.
 * Tutorials and Guidance: Code snippets and visualization techniques adapted from online tutorials, Kaggle kernels, and community resources.
-* Generative AI Assistance: Ideas and code optimizations provided by ChatGPT and other AI tools.
+* Generative AI Assistance: Ideas and code optimizations provided by Grok.
 
 Acknowledgements:
-Special thanks to mentors, peers, and the data science community for their invaluable support and feedback throughout the project.
+Special thanks to Vasilica Pavaloi, Niel McEwen and my peers for their invaluable support and feedback throughout the project.
