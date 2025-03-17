@@ -31,7 +31,7 @@ st.markdown("""
 def load_data():
     try:
         # Use os.path.join to construct the path dynamically
-        file_path = os.path.join(os.path.dirname(__file__), 'data', 'vgsales_cleaned.csv')
+        file_path = os.path.join(os.path.dirname(__file__), 'Data', 'vgsales_cleaned.csv')
         if not os.path.exists(file_path):
             st.error("Error: 'vgsales_cleaned.csv' not found in the data folder. Please check the file path or upload the file.")
             return pd.DataFrame()  # Return empty DataFrame as fallback
