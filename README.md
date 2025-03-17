@@ -163,7 +163,20 @@ Next Skills/Tools
 * Streamlit: Building the interactive dashboard.
 * Jupyter Notebook: Documenting the workflow and analysis.
 
-## Credits and Acknowledgements
+## Deployment
+
+The *Video Game Sales Explorer* dashboard has been successfully deployed on two platforms—**Streamlit Community Cloud** and **Heroku**—to ensure accessibility and provide stakeholders with an interactive experience to explore video game sales trends, genre performance, and regional insights.
+
+- **Live Links**:
+  - Streamlit Community Cloud: [https://video-game-sales-capstone.streamlit.app](https://video-game-sales-capstone.streamlit.app)  
+  - Heroku: [https://videogamesalesexplorer-f272c6e4e2ab.herokuapp.com](https://videogamesalesexplorer-f272c6e4e2ab.herokuapp.com)
+
+- **Maintenance**:
+  - Updates are applied by committing changes to the GitHub repository (`git push origin main`), triggering automatic redeployment on Streamlit Community Cloud.
+  - For Heroku, updates require a manual push (`git push heroku main`).
+  - Streamlit Community Cloud ensures constant availability (no sleep), while Heroku’s free tier sleeps after 30 minutes of inactivity.
+
+- ## Credits and Acknowledgements
 
 ## Content and Media Sources:
 * Dataset: Video Game Sales Dataset from Kaggle.

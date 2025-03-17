@@ -70,7 +70,7 @@ else:
             - **Features**: Interactive plots with genre and year filters.
             Use the sidebar to navigate and filter data!
         """)
-        st.image("data/videogames.png", caption="Video Game Sales Graphic")  # Update with the correct path to your image
+        st.image("Data/videogames.png", caption="Video Game Sales Graphic")  # Update with the correct path to your image
 
     # Sales by Genre Page (Bar Plot)
     elif page == "Sales by Genre":
