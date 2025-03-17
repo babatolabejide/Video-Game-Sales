@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import os
 
 # Set page configuration with dark theme
 st.set_page_config(page_title="Video Game Sales Explorer", layout="wide", initial_sidebar_state="expanded")
@@ -25,10 +26,19 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Load data
-@st.cache_data  # Cache data to improve performance
+# Load data with error handling
+@st.cache_data
 def load_data():
-    return pd.read_csv('data/vgsales_cleaned.csv')
+    try:
+        # Use os.path.join to construct the path dynamically
+        file_path = os.path.join(os.path.dirname(__file__), 'data', 'vgsales_cleaned.csv')
+        if not os.path.exists(file_path):
+            st.error("Error: 'vgsales_cleaned.csv' not found in the data folder. Please check the file path or upload the file.")
+            return pd.DataFrame()  # Return empty DataFrame as fallback
+        return pd.read_csv(file_path)
+    except FileNotFoundError as e:
+        st.error("FileNotFoundError: The dataset 'vgsales_cleaned.csv' could not be loaded. Check the file path and repository.")
+        return pd.DataFrame()  # Return empty DataFrame as fallback
 
 df = load_data()
 
